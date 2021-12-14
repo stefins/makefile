@@ -1,12 +1,12 @@
 CC = gcc
-INCLUDES = -I./waster
+INCLUDES = -I./waster/
 PROG_NAME = a.out
-CFLAGS = -Wall $(INCLUDES) -lwaster
-LDFLAGS = -L./waster/
+CFLAGS = -Wall -pthread
+LDFLAGS = waster/libwaster.a
 SUBDIRS = waster
 
 all: subdirs
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROG_NAME) main.c
+	$(CC) $(CFLAGS) main.c $(LDFLAGS) $(INCLUDES) -o $(PROG_NAME)
 
 subdirs:
 	@for dir in $(SUBDIRS); do \
